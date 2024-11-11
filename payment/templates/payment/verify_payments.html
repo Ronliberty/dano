@@ -1,0 +1,25 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+  <h2>Pending Payments</h2>
+  <table>
+    <tr>
+      <th>Transaction ID</th>
+      <th>User</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    {% for payment in payments %}
+      <tr>
+        <td>{{ payment.transaction_id }}</td>
+        <td>{{ payment.user.username }}</td>
+        <td>${{ payment.amount }}</td>
+        <td>{{ payment.status }}</td>
+
+    {% empty %}
+      <tr><td colspan="5">No pending payments.</td></tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

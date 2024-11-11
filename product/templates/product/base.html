@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="{% static 'product/css/styles.css' %}">
+</head>
+<body>
+<nav>
+<div class="container nav_container">
+        <ul class="nav_list">
+          <li class="nav_item"><a href="{% url 'product:wishlist' %}" class="nav_link">wishlist</a></li>
+          <li class="nav_item"><a href="{% url 'payment:user_balance' %}" class="nav_link">Account balance</a></li>
+          <li class="nav_item"><a href="{% url 'product:product-list' %}" class="nav_link">Products</a></li>
+          <li class="nav_item">
+            <a href="{% url 'account:sign_up' %}" class="nav_link">Profile</a>
+            <a href="{% url 'login' %}" class="nav_link">logout</a>
+          </li>
+        </ul>
+</div>
+</nav>
+<main>
+			{% block content %}
+
+      		{% endblock %}
+		</main>
+
+</body>
+</html>

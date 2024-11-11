@@ -1,0 +1,89 @@
+{% extends "product/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<body style="background-color: #E5D9F2;">
+    <h1 style="text-align: center; font-size: 3rem; margin-bottom: 15px; color: #333; font-family: 'Arial', sans-serif; font-weight: bold;">Product List</h1>
+
+    <div class="product-list" style="display: flex; flex-wrap: wrap; gap: 30px; padding: 30px; background-color: #E5D9F2;">
+        {% for product in products %}
+            <div class="product-item" style="background-color: #F5EFFF; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); width: 25rem; height: 35rem; text-align: center; overflow: hidden; transition: transform 0.3s ease-in-out; cursor: pointer; border: 1px solid #ddd; margin-bottom: 20px;">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="margin-top: 10px; width: 90%; height: 60%; object-fit: cover; border-radius: 5px; border-bottom: 10px; 2px solid #f1f1f1;">
+                {% endif %}
+                <div style="background-color: #F5EFFF;">
+                <h2 style="font-size: 1.5rem; color: #333; font-family: 'Arial', sans-serif; font-weight: 600; margin-bottom: 10px; line-height: 1.2;">{{ product.name }}</h2>
+                    <p style="font-size: 1.1rem; color: #777; font-family: 'Arial', sans-serif; margin-bottom: 10px;">Price: <span style="font-weight: bold; color: #007BFF;"> ${{ product.price }} </span></p>
+                <a href="{% url 'product:product-detail' product.id %}" class="btn" style="font-size: 1.2rem; text-decoration: none; display: inline-block; background-color: #007BFF; color: white; padding: 12px 20px; border-radius: 5px; margin-bottom: 10px; width: 50%; text-align: center; transition: background-color 0.3s;">View Details</a>
+                <a href="{% url 'product:add-to-wishlist' product.id %}" class="btn" style="text-decoration: none; display: inline-block; background-color: #8B5DFF; font-size: 1.2rem; color: white; padding: 12px 20px; border-radius: 5px; width: 50%; margin-bottom: 15px; text-align: center; transition: background-color 0.3s;">wish list</a>
+                </div>
+                <div style="margin-top: 15px;"></div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if not products %}
+        <p style="text-align: center; font-size: 1.2rem; color: #777; margin-top: 30px;">No products available.</p>
+    {% endif %}
+{% endblock %}
+
+<style>
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;  /* Smaller title on tablets and mobile */
+            margin-bottom: 20px;
+        }
+
+        .product-list {
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .product-item {
+            width: 100%;  /* Make each product item take full width on smaller screens */
+            max-width: 350px; /* Limit the width of each item */
+            margin: 0 auto; /* Center align items */
+        }
+
+        .product-item img {
+            height: 180px; /* Adjust image size on smaller screens */
+        }
+
+        .product-item h2 {
+            font-size: 1.3rem;
+        }
+
+        .product-item p {
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 10px 15px; /* Adjust padding of buttons for better fit */
+            font-size: 1rem;
+        }
+    }
+
+    /* For small mobile devices */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2rem;  /* Smaller title for mobile phones */
+        }
+
+        .product-item {
+            width: 100%; /* Full width for each product item */
+            max-width: 300px; /* Adjust max width for small screens */
+        }
+
+        .product-item img {
+            height: 160px;  /* Adjust image size for mobile screens */
+        }
+
+        .btn {
+            padding: 8px 12px;  /* Smaller buttons for mobile screens */
+            font-size: 0.9rem;
+        }
+    }
+</style>
+</body>

@@ -1,0 +1,10 @@
+
+<div style="margin:20px;">
+{% block content %}
+  <h2 style="font-size: 24px; color: #333; text-align: center;">Confirm Deposit</h2>
+  <p style="font-size: 18px; color: #555;">Transaction ID: <span style="font-weight: bold; color: #333;"> {{ payment.transaction_id }}</span></p>
+  <p style="font-size: 18px; color: #555;">Amount: <span style="font-weight: bold; color: #333;">${{ amount }}</span></p>
+  <p style="font-size: 18px; color: #555;">Status: <span style="font-weight: bold; color: #ff9900;">Pending</span></p>
+  <p style="font-size: 16px; color: #777; text-align: center;">Your deposit is currently under review.</p>
+{% endblock %}
+</div>

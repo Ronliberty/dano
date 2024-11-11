@@ -1,0 +1,19 @@
+{% extends "product/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+  <h2 style="color: #333; text-align: center; font-family: Arial, sans-serif; margin-top: 50px;">Your Balance</h2>
+  <p style="font-size: 18px; font-weight: bold; color: green; text-align: center;">
+    Balance: ${{ object.balance }}
+  </p>
+
+  <!-- Deposit Button -->
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="{% url 'payment:deposit_funds' %}"
+       style="display: inline-block; padding: 15px 30px; background-color: #4CAF50; color: white; font-size: 18px; text-align: center; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">
+      Deposit
+    </a>
+  </div>
+
+{% endblock %}

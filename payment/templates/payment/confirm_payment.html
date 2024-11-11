@@ -1,0 +1,14 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+  <h2>Confirm Payment</h2>
+  <p>Transaction ID: {{ transaction_id }}</p>
+  <p>User: {{ payment.user.username }}</p>
+  <p>Amount: ${{ payment.amount }}</p>
+  <p>Status: {{ payment.status }}</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Payment</button>
+  </form>
+{% endblock %}

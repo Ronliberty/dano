@@ -1,0 +1,16 @@
+<h1 style="text-align: center; color: #333;">Order #{{ order.id }}</h1>
+<p>Status: {{ order.status }}</p>
+<p>Total: ${{ order.total }}</p>
+
+<!-- Assuming 'order.products' is a list of products in the order -->
+<div style="text-align: center;">
+    {% for product in order.products %}
+        <div style="margin: 20px;">
+            <h2>{{ product.name }}</h2> <!-- Display product name -->
+            <p>Image Object: {{ product.image }}</p>
+<p>Image URL: {{ product.image.url }}</p>
+
+            <p>Price: ${{ product.price }}</p> <!-- Display product price -->
+        </div>
+    {% endfor %}
+</div>

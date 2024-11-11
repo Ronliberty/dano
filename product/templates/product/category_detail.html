@@ -1,0 +1,10 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}detail{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; color: #333;">{{ category.name }}</h1>
+    <p style="color: #666;">{{ category.description }}</p>
+    <li><a href="{% url 'product:category-edit' pk=category.pk %}">category-edit</a></li>
+    <li><a href="{% url 'product:category-delete' pk=category.pk %}">category-delete </a></li>
+{% endblock %}

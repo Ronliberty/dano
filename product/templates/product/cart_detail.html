@@ -1,0 +1,58 @@
+<style>
+    body {
+    background-color: #E7FBE6;
+    }
+
+    @media (max-width: 768px){
+    h1 {
+            font-size: 2rem;
+            margin-top: 30px;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        button {
+            width: 80%; /* Full-width button on smaller screens */
+            padding: 12px;
+            font-size: 1.5rem;
+        }
+    }
+</style>
+<h1 style="font-size: 2rem; color: #333; text-align: center; margin-top: 30px;">Your Cart</h1>
+{% if cart_items %}
+    <ul style="list-style-type: none; padding: 0; text-align: center;">
+        {% for item in cart_items %}
+            <li style="margin-bottom: 8px; font-size: 1.8rem; color: #555;">{{ item.product.name }} - <span style="font-weight: bold;"> Quantity: {{ item.quantity }}</span></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p style="font-size: 1.5rem; color: #888; text-align: center;">Your cart is empty.</p>
+{% endif %}
+
+<!-- Form to make the purchase -->
+<form action="{% url 'payment:make_purchase' %}" method="POST" style="margin-top: 20px; text-align: center;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary"
+    style="padding: 10px 20px; font-size: 1.5rem; background-color: #007bff; border: none; color: #fff; border-radius: 4px; cursor: pointer;"
+    onmouseover="this.style.backgroundColor='#0056b3';"
+    onmouseout="this.style.backgroundColor='#007bff';">
+    Proceed to Payment
+</button>
+</form>

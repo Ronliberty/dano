@@ -1,0 +1,15 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}delete{% endblock %}
+
+{% block content %}
+    <h1>Are you sure you want to delete "{{ category.name }}"?</h1>
+    <p>This action cannot be undone.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Yes, Delete</button>
+        <a href="{% url 'dashboard:manager_dashboard' %}" style="padding: 10px 20px; text-decoration: none; background-color: #ccc; color: black; border-radius: 5px;">Cancel</a>
+    </form>
+
+{% endblock %}

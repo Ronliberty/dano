@@ -1,0 +1,23 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+  <h2>Confirmed Transactions</h2>
+  <table>
+    <tr>
+      <th>Transaction ID</th>
+      <th>User</th>
+      <th>Amount</th>
+      <th>Status</th>
+    </tr>
+    {% for payment in confirmed_payments %}
+      <tr>
+        <td>{{ transaction_id }}</td>
+        <td>{{ payment.user.username }}</td>
+        <td>${{ payment.amount }}</td>
+        <td>{{ payment.status }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4">No confirmed transactions.</td></tr>
+    {% endfor %}
+  </table>
+{% endblock %}

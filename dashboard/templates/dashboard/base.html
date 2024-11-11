@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+	<title>{% block title %}Admin{% endblock %}</title>
+</head>
+<body>
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><i class='bx bxs-smile icon'></i> Seller </a>
+		<ul class="side-menu">
+			<li><a href="#" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="main">Main</li>
+			<li>
+				<a href="#"><i class='bx bxs-inbox icon' ></i> Payment <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#"manage wallet</a></li>
+					<li><a href="{% url 'payment:verify_payments' %}">verify payments</a></li>
+					<li><a href="#">Confirm payment</a></li>
+					<li><a href="{% url 'payment:confirmed_transactions' %}">confirmedtransactions</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'payment:manage_wallet' %}"><i class='bx bxs-chart icon' ></i> Wallet</a></li>
+			<li><a href="#"><i class='bx bxs-widget icon' ></i> upload services</a></li>
+			<li><a href="#"><i class='bx bxs-widget icon' ></i> Our services</a></li>
+
+			<li><a href="#"><i class='bx bx-table icon' ></i> Meetings</a></li>
+			<li>
+				<a href="#"><i class='bx bxs-notepad icon' ></i> Products <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a href="{% url 'product:category-list' %}">category list</a></li>
+					<li><a href="{% url 'product:category-add' %}">category-add</a></li>
+
+
+					<li><a href="{% url 'product:product-add' %}">product-add</a></li>
+
+					<li><a href="{% url 'product:product-updated-list' %}">'product-updated-list</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="ads">
+			<div class="wrapper">
+				<a href="{% url 'logout' %}" class="btn-upgrade">Logout</a>
+
+			</div>
+		</div>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu toggle-sidebar' ></i>
+			<form action="#">
+				<div class="form-group">
+					<input type="text" placeholder="Search...">
+					<i class='bx bx-search icon' ></i>
+				</div>
+			</form>
+			<a href="#" class="nav-link">
+				<i class='bx bxs-bell icon' ></i>
+				<span class="badge">5</span>
+			</a>
+			<a href="#" class="nav-link">
+				<i class='bx bxs-message-square-dots icon' ></i>
+				<span class="badge">8</span>
+			</a>
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="#" alt="">
+				<ul class="profile-link">
+
+					<li><a href="{% url 'logout' %}"><i class='bx bxs-log-out-circle' ></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			{% block content %}
+
+      		{% endblock %}
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- NAVBAR -->
+
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="{% static 'dashboard/script.js' %}"></script>
+</body>
+</html>

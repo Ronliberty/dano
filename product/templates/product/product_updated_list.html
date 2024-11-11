@@ -1,0 +1,16 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}form{% endblock %}
+
+{% block content %}
+<h2>Updated Products</h2>
+<ul>
+    {% for product in updated_products %}
+        <li>
+            <a href="{% url 'product:product-detail' product.id %}">{{ product.name }}</a> - Last updated: {{ product.updated_at }}
+        </li>
+    {% empty %}
+        <li>No updated products found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

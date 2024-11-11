@@ -1,0 +1,48 @@
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #A594F9; /* Dark background for contrast */
+  padding: 15px;
+}
+
+.container.nav_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling the Navbar List */
+.nav_list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* Styling the Navbar Links */
+.nav_item {
+  position: relative;
+}
+
+.nav_link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 8px 15px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.nav_link:hover {
+  background-color: #555; /* Hover effect */
+  color: cyan;
+  border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav_list {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}

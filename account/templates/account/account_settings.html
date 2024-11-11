@@ -1,0 +1,40 @@
+{% load static %}
+{% block content %}
+
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+</style>
+<a href="" class="back-button"><i class='bx bx-arrow-back'></i></a>
+<br>
+<div class="row">
+	<div class="col-md-3">
+		<div class="card card-body" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+			<a class="btn btn-warning" href="" style="text-decoration: none; font-weight: bold; padding: 10px 20px; background-color: purple; color: #000; border-radius: 5px;"> &#8592; Back to Profile</a>
+			<hr style="border-top: 1px solid #ddd;">
+			<h3 style="text-align: center font-size: 24px; color: #333;">Account Settings</h3>
+			<hr style="border-top: 1px solid #ddd;">
+			<img class="profile-pic" src="{#}" style="display: block; margin: 20px auto; border: 1px solid black; border-radius: 50%; width: 10rem; height: 10rem; object-fit: cover;">
+		
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="card card-body" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+			
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{form.as_p}}
+		
+			<input class="btn btn-primary" type="submit" name="Update Information">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}
